@@ -1,3 +1,3 @@
 # HNGx
 
-My tasks in HNGx internship
+My tasks from HNGx internship
