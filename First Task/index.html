@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HNGx First Task</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/36e8bee060.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <img src="./assets/banner.jpg" alt="banner" />
+      <div class="container">
+        <img
+          src="./assets/profile.jpg"
+          alt="Chisom Udonsi"
+          data-testid="slackDisplayImage"
+        />
+        <h1 data-testid="slackUserName">Chisom Udonsi</h1>
+        <div class="info">
+          <i class="fa-brands fa-slack" aria-label="slack track"></i>
+          <p data-testid="myTrack">Frontend</p>
+        </div>
+        <div class="info">
+          <i class="fa-brands fa-github"></i>
+          <a href="#" target="_blank" data-testid="githubURL"
+            >Project&apos;s Github Repo</a
+          >
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-calendar-days"></i>
+          <p class="day" data-testid="currentDayOfTheWeek">...</p>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-clock"></i>
+          <p class="time" data-testid="currentUTCTime">...</p>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-link"></i>
+          <a href="https://udonsichisom.dev" target="_blank">Portfolio</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

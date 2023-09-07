@@ -1,0 +1,128 @@
+/* resets */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select,
+a {
+  font: inherit;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* utilities */
+:root {
+  --clr-primary-400: hsl(201.96, 94.17%, 40.39%);
+  --clr-neutral-100: hsl(0, 0%, 98%);
+  --clr-neutral-900: hsl(0, 0%, 10%);
+}
+
+/* general styles */
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--clr-neutral-900);
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  background-image: url("./assets/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  /* From https://css.glass */
+  background-color: var(--clr-neutral-900);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+main {
+  background-color: var(--clr-neutral-100);
+  width: 50%;
+  border-radius: 1em;
+}
+
+main > img {
+  border-radius: 1em 1em 0 0;
+  height: 8em;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  position: relative;
+  padding: 4em 1.5em;
+}
+
+.container img {
+  width: 8em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 5px solid var(--clr-primary-400);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  margin-top: 0.5em;
+  font-size: 1.2rem;
+}
+
+.info a {
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.5s;
+}
+
+.info a:is(:hover, :focus-visible) {
+  color: var(--clr-primary-400);
+}
+
+@media (max-width: 40em) {
+  main {
+    width: 90%;
+  }
+}
