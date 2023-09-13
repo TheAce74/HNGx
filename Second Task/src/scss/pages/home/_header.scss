@@ -1,0 +1,138 @@
+@use "../../abstracts" as *;
+@use "../../base" as *;
+
+.header {
+  @extend .flex;
+  @extend .padding;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1;
+  isolation: isolate;
+  transition: background-color 0.3s;
+
+  img {
+    width: 8em;
+
+    @include max(small) {
+      width: 7em;
+    }
+  }
+
+  .wrapper {
+    width: 50%;
+    position: relative;
+    color: var(--clr-neutral-100);
+    --space: 0.6em;
+
+    input {
+      border: 2px solid var(--clr-neutral-100);
+      padding: var(--space);
+      border-radius: 0.5em;
+      background-color: transparent;
+      width: 100%;
+    }
+
+    input::placeholder {
+      color: var(--clr-neutral-100);
+    }
+
+    svg {
+      font-size: 1.4rem;
+      position: absolute;
+      right: calc(1.01818 * var(--space));
+      top: 50%;
+      translate: 0 -50%;
+    }
+  }
+
+  &-flex {
+    @extend .flex;
+    color: var(--clr-neutral-100);
+
+    a {
+      @extend %link;
+      @extend .link;
+
+      @include max(medium) {
+        display: none;
+      }
+    }
+  }
+
+  button {
+    width: max-content;
+  }
+
+  .nav {
+    position: absolute;
+    inset: 100% 0 auto 0;
+    background-color: var(--clr-primary-500);
+    translate: -100% 0;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+
+    ul {
+      @extend .flex;
+      color: var(--clr-neutral-100);
+      gap: 0;
+
+      li {
+        width: 100%;
+
+        * {
+          display: block;
+          margin-inline: auto;
+        }
+
+        a {
+          @extend %link;
+          width: 100%;
+          padding-block: 1em;
+          transition: background-color 0.3s;
+
+          &:is(:hover, :focus-visible) {
+            background-color: var(--clr-primary-300);
+          }
+        }
+
+        span {
+          width: max-content;
+        }
+
+        svg {
+          path {
+            stroke: var(--clr-neutral-100);
+          }
+        }
+      }
+
+      @include max(small) {
+        flex-direction: column;
+
+        li {
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-inline: 2em;
+            gap: 1em;
+          }
+
+          * {
+            margin-inline: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .show {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+.darken {
+  background-color: var(--clr-neutral-900);
+}

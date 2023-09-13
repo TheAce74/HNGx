@@ -1,0 +1,68 @@
+//utility classes, sass placeholders and css custom properties
+@use "../abstracts" as *;
+
+:root {
+  @each $key, $value in $clr-primary {
+    --clr-primary-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-accent {
+    --clr-accent-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-neutral {
+    --clr-neutral-#{$key}: #{$value};
+  }
+}
+
+%sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+%button {
+  cursor: pointer;
+  border: none;
+}
+
+%link {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.link {
+  --color: var(--clr-neutral-100);
+  color: var(--color);
+  transition: all 0.3s;
+
+  &:is(:hover, :focus-visible) {
+    --color: var(--clr-primary-400);
+  }
+
+  &:active {
+    scale: 0.8;
+  }
+}
+
+.padding {
+  padding: 1em 5em;
+
+  @include max(medium) {
+    padding: 1em;
+  }
+}
+
+.fill {
+  min-height: 100dvh;
+}

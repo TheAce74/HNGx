@@ -1,0 +1,31 @@
+@use "../../base" as *;
+
+.button {
+  @extend %button;
+  --color: var(--clr-primary-400);
+  background-color: var(--color);
+  color: var(--clr-neutral-100);
+  border: 2px solid var(--color);
+  border-radius: 0.2em;
+  padding: 0.2em 0.8em;
+  transition: all 0.3s;
+
+  &:is(:hover, :focus-visible) {
+    background-color: transparent;
+    color: var(--color);
+  }
+
+  &:active {
+    scale: 0.8;
+  }
+
+  &[data-color="accent"] {
+    --color: var(--clr-accent-400);
+  }
+
+  &[data-rounded="true"] {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    padding: 0.5em;
+  }
+}
