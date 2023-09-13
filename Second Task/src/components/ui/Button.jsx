@@ -4,6 +4,8 @@ export default function Button({
   color,
   rounded,
   handleClick,
+  ariaLabel,
+  ariaControls,
 }) {
   return (
     <button
@@ -12,6 +14,8 @@ export default function Button({
       data-color={color}
       data-rounded={rounded}
       onClick={handleClick}
+      aria-label={ariaLabel}
+      aria-controls={ariaControls}
     >
       {children}
     </button>

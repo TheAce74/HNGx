@@ -9,7 +9,7 @@ function Hero() {
     <InView
       as="section"
       className="hero"
-      onChange={(inView) => {
+      onChange={inView => {
         if (inView) {
           setHeaderClass("header");
         } else {
