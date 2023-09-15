@@ -5,7 +5,7 @@ function Series() {
     <section className="series">
       <SideBar />
       <div className="info">
-        <h1>Series</h1>
+        <h1>TV Series</h1>
       </div>
     </section>
   );

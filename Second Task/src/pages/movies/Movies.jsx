@@ -4,7 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Loader from "../../components/layout/Loader";
-import MovieCard from "../home/components/MovieCard";
+import MovieCard from "../../components/ui/MovieCard";
 import { v4 as uuidv4 } from "uuid";
 import { FaCircle } from "react-icons/fa6";
 import { useAppContext } from "../../context/AppContext";
@@ -151,7 +151,7 @@ function Movies() {
                     ? `https://www.youtube.com/embed/${
                         movieState.data[1].results[
                           movieState.data[1].results.length - 1
-                        ].key
+                        ]?.key
                       }?si=QKsll6oypGAbVTob`
                     : ""
                 }

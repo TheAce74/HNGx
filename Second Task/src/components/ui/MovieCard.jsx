@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import imdb from "../../../assets/imdb.svg";
-import tomato from "../../../assets/tomato.svg";
+import imdb from "../../assets/imdb.svg";
+import tomato from "../../assets/tomato.svg";
 import FavButton from "./FavButton";
-import Button from "../../../components/ui/Button";
-import { useAppContext } from "../../../context/AppContext";
+import Button from "./Button";
+import { useAppContext } from "../../context/AppContext";
 
 export default function MovieCard({
   moviePosterUrl,

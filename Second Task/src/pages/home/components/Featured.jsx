@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa6";
-import MovieCard from "./MovieCard";
+import MovieCard from "../../../components/ui/MovieCard";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/layout/Loader";
 import { useAppContext } from "../../../context/AppContext";
