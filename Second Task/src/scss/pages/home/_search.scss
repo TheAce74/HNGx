@@ -1,0 +1,35 @@
+@use "../../abstracts" as *;
+
+.search {
+  background-color: var(--clr-neutral-100);
+  position: fixed;
+  inset: em(100) 1em auto 1em;
+  height: 25em;
+  border-radius: 0.5em;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  box-shadow: 0 0 4px var(--clr-neutral-900);
+  overflow-y: auto;
+  color: var(--clr-neutral-900);
+
+  > div {
+    position: static;
+  }
+
+  > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+  }
+}

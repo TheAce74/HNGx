@@ -17,4 +17,8 @@
   .fav {
     color: var(--clr-primary-400);
   }
+
+  &:has(.fav) {
+    background-color: var(--clr-primary-200);
+  }
 }
