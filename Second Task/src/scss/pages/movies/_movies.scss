@@ -51,6 +51,7 @@
       .genres div {
         @extend .flex;
         justify-content: flex-start;
+        flex-wrap: wrap;
         margin-top: 0.5em;
 
         span {
