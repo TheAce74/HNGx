@@ -41,6 +41,16 @@
   gap: 1em;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+
+  &-responsive {
+    grid-template-columns: repeat(auto-fit, minmax(min(em(250), 100%), 1fr));
+  }
+}
+
 .link {
   --color: var(--clr-neutral-100);
   color: var(--color);
@@ -60,6 +70,14 @@
 
   @include max(medium) {
     padding: 1em;
+  }
+
+  &-section {
+    padding: 3em 5em;
+
+    @include max(medium) {
+      padding: 2em 1em;
+    }
   }
 }
 

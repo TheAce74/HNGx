@@ -1,5 +1,30 @@
+@use "../../abstracts" as *;
 @use "../../base" as *;
 
 .featured {
   @extend .fill;
+  @extend .padding-section;
+
+  .head {
+    @extend .flex;
+    margin-bottom: 1em;
+
+    a {
+      --color: var(--clr-neutral-900);
+      @extend .flex;
+      @extend %link;
+      @extend .link;
+      gap: 0.2em;
+    }
+  }
+
+  .body {
+    @extend .grid;
+    @extend .grid-responsive;
+
+    &:has(> .peeek-loading) {
+      place-items: center;
+      height: calc(100dvh - em(200));
+    }
+  }
 }

@@ -1,0 +1,88 @@
+@use "../../base" as *;
+
+.movie-card {
+  --border-radius: 0.6em;
+  @extend %link;
+  position: relative;
+  box-shadow: 0 0 2px var(--clr-neutral-400);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--clr-neutral-900);
+    opacity: 0.8;
+    border-radius: var(--border-radius);
+    translate: 0 100%;
+    transition: translate 0.5s;
+  }
+
+  div:has(> .movie-poster) {
+    position: relative;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: var(--clr-neutral-900);
+      opacity: 0.4;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+  }
+
+  .movie-poster {
+    aspect-ratio: 0.9;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+
+  .movie-airtime,
+  .movie-categories {
+    color: var(--clr-neutral-400);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-block: 0.5em;
+  }
+
+  .padding-inline {
+    padding-inline: 1em;
+    padding-bottom: 0.5em;
+  }
+
+  .movie-title {
+    margin-bottom: 0.3em;
+  }
+
+  .rating {
+    @extend .flex;
+    margin-bottom: 0.3em;
+
+    > div {
+      @extend .flex;
+      gap: 0.5em;
+    }
+  }
+
+  a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  &:is(:hover, :focus-visible) {
+    &::after {
+      translate: 0 0;
+    }
+
+    a {
+      opacity: 1;
+    }
+  }
+}

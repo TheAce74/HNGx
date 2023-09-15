@@ -1,42 +1,16 @@
+import logoLight from "../../assets/logoLight.svg";
 import { Link, NavLink } from "react-router-dom";
-import logoDark from "../../../assets/logoDark.svg";
-import { PiMagnifyingGlassBold } from "react-icons/pi";
-import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { GrHomeRounded } from "react-icons/gr";
 import { LuVideo } from "react-icons/lu";
 import { MdOndemandVideo } from "react-icons/md";
 import { BsCalendar3 } from "react-icons/bs";
-import { IoClose } from "react-icons/io5";
-import Button from "../../../components/ui/Button";
-import { useState } from "react";
+import { BiLogOut } from "react-icons/bi";
 
-function Header({ headerClass }) {
-  const [showMenu, setShowMenu] = useState(false);
-
+export default function SideBar() {
   return (
-    <header className={headerClass}>
-      <img src={logoDark} alt="logo" />
-      <div className="wrapper">
-        <input type="text" placeholder="What do you want to watch?" />
-        <PiMagnifyingGlassBold />
-      </div>
-      <div className="header-flex">
-        <Link to="/">Sign in</Link>
-        <Button
-          rounded={true}
-          handleClick={() => setShowMenu(!showMenu)}
-          ariaLabel="menu button"
-          ariaControls="primary-navigation"
-        >
-          {showMenu ? <IoClose /> : <HiOutlineMenuAlt4 />}
-        </Button>
-      </div>
-      <nav
-        className={showMenu ? "nav show" : "nav"}
-        id="primary-navigation"
-        aria-label="primary navigation"
-        aria-expanded={showMenu}
-      >
+    <aside className="sidebar">
+      <img src={logoLight} alt="logo" />
+      <nav>
         <ul role="list">
           <li>
             <NavLink
@@ -76,7 +50,15 @@ function Header({ headerClass }) {
           </li>
         </ul>
       </nav>
-    </header>
+      <div className="extra">
+        <h4>Play movie quizzes and earn free tickets</h4>
+        <p>50k people are playing now</p>
+        <span>Start playing</span>
+      </div>
+      <Link to="/">
+        <BiLogOut />
+        <span>Log out</span>
+      </Link>
+    </aside>
   );
 }
-export default Header;

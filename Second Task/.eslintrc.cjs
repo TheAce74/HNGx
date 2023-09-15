@@ -19,5 +19,6 @@ module.exports = {
     "react/prop-types": 0,
     "react/display-name": 0,
     "react-hooks/exhaustive-deps": 0,
+    "react/no-unknown-property": 0,
   },
 };

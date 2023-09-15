@@ -1,0 +1,40 @@
+@use "../../abstracts" as *;
+@use "../../base" as *;
+
+.footer {
+  @extend .padding;
+  padding-top: 3em;
+  background-color: var(--clr-neutral-900);
+  color: var(--clr-neutral-100);
+
+  ul,
+  .footer-flex {
+    @extend .flex;
+    width: 70%;
+    margin-inline: auto;
+    margin-bottom: 3em;
+    font-weight: 600;
+  }
+
+  ul {
+    font-size: 2rem;
+    width: max(40%, 15ch);
+    margin-bottom: 1.5em;
+
+    a {
+      @extend .link;
+    }
+  }
+
+  > p {
+    text-align: center;
+  }
+
+  @include max(small) {
+    .footer-flex {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

@@ -1,15 +1,11 @@
-import { useState } from "react";
-import Header from "./Header";
 import { InView } from "react-intersection-observer";
 
-function Hero() {
-  const [headerClass, setHeaderClass] = useState("header");
-
+function Hero({ setHeaderClass }) {
   return (
     <InView
       as="section"
       className="hero"
-      onChange={inView => {
+      onChange={(inView) => {
         if (inView) {
           setHeaderClass("header");
         } else {
@@ -18,9 +14,8 @@ function Hero() {
       }}
       rootMargin="-150px"
     >
-      <Header headerClass={headerClass} />
       <img
-        src="https://media.istockphoto.com/id/1202746960/photo/3d-rendering-abstract-neon-background-empty-tunnel-long-corridor-path-road-performance-stage.jpg?s=2048x2048&w=is&k=20&c=iSW3g6hZT2AgH5QafzIUblMZ3VdlxwlNtXJ8C10NqMc="
+        src="https://media.istockphoto.com/id/1224036158/photo/abstract-backgrounds-lights.jpg?s=612x612&w=0&k=20&c=uz_5ZIRS3WXXyYpCOy1Rm-_eHFpVLNFPZ_HUWcANK8I="
         alt=""
         className="bg"
       />

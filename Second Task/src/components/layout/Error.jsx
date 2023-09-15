@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Error() {
+export default function Error() {
   return (
     <section className="wrapper error">
       <div className="container">
@@ -49,4 +49,3 @@ function Error() {
     </section>
   );
 }
-export default Error;

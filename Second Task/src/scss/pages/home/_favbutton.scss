@@ -1,0 +1,20 @@
+@use "../../base" as *;
+
+.heart {
+  @extend %button;
+  position: absolute;
+  z-index: 1;
+  top: 1em;
+  background-color: var(--clr-neutral-100);
+  opacity: 0.8;
+  font-weight: 500;
+  color: var(--clr-neutral-400);
+  font-size: 1.2rem;
+  right: 1em;
+  padding: 0.4em;
+  border-radius: 50%;
+
+  .fav {
+    color: var(--clr-primary-400);
+  }
+}

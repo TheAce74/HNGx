@@ -1,0 +1,31 @@
+@use "../../abstracts" as *;
+@use "../../base" as *;
+
+.series {
+  @extend .flex;
+  @extend .fill;
+  align-items: stretch;
+
+  .info {
+    width: calc(85% - 1em);
+    @extend .grid;
+    @extend .grid-responsive;
+    padding: 1em 1em 1em 0;
+
+    &:has(> .peeek-loading) {
+      height: 100dvh;
+      place-items: center;
+    }
+  }
+
+  @include max(small) {
+    flex-direction: column;
+    justify-content: start;
+
+    .info {
+      width: 100%;
+      padding-inline: 1em;
+      padding-top: 0;
+    }
+  }
+}

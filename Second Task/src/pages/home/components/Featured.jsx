@@ -1,9 +1,23 @@
 import { Link } from "react-router-dom";
-import { FaAngleRight, FaRegHeart } from "react-icons/fa6";
-import imdb from "../../../assets/imdb.svg";
-import tomato from "../../../assets/tomato.svg";
+import { FaAngleRight } from "react-icons/fa6";
+import MovieCard from "./MovieCard";
+import { useEffect, useState } from "react";
+import Loader from "../../../components/layout/Loader";
+import { useAppContext } from "../../../context/AppContext";
+import { v4 as uuidv4 } from "uuid";
 
 function Featured() {
+  const [loader, setLoader] = useState(true);
+  const { data } = useAppContext();
+
+  useEffect(() => {
+    if (data.top_movies.length !== 0) {
+      setLoader(false);
+    } else {
+      setLoader(true);
+    }
+  }, [data]);
+
   return (
     <section className="featured">
       <div className="head">
@@ -14,32 +28,37 @@ function Featured() {
         </Link>
       </div>
       <div className="body">
-        <div className="card">
-          <span className="movie-type" aria-label="movie type">
-            TV series
-          </span>
-          <button className="heart" aria-label="add to favorites">
-            <FaRegHeart />
-          </button>
-          <img
-            src="https://media.istockphoto.com/id/1202746960/photo/3d-rendering-abstract-neon-background-empty-tunnel-long-corridor-path-road-performance-stage.jpg?s=2048x2048&w=is&k=20&c=iSW3g6hZT2AgH5QafzIUblMZ3VdlxwlNtXJ8C10NqMc="
-            alt=""
-          />
-          <p className="movie-location" aria-label="filmed at">
-            USA 2016 - Current
-          </p>
-          <h3 className="movie-title">Stranger Things</h3>
-          <div className="rating">
-            <div>
-              <img src={imdb} alt="" />
-              <span aria-label="imdb rating">86.0/100</span>
-            </div>
-            <div>
-              <img src={tomato} alt="" />
-              <span aria-label="rotten tomatoes rating">97%</span>
-            </div>
-          </div>
-        </div>
+        {loader ? (
+          <Loader />
+        ) : (
+          data?.top_movies
+            ?.slice(0, 12)
+            .map(
+              ({
+                id,
+                poster_path,
+                title,
+                vote_average,
+                release_date,
+                genre_ids,
+              }) => (
+                <MovieCard
+                  key={uuidv4()}
+                  id={id}
+                  moviePosterUrl={poster_path}
+                  movieName={title}
+                  movieReleaseDate={new Date(release_date)
+                    .toUTCString()
+                    .replace(" 00:00:00 GMT", "")}
+                  imbdRating={vote_average * 10}
+                  tomatoRating={
+                    vote_average * 10 + Math.floor(Math.random() * 11)
+                  }
+                  movieCategories={genre_ids}
+                />
+              )
+            )
+        )}
       </div>
     </section>
   );

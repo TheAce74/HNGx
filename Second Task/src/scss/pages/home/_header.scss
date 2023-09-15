@@ -6,8 +6,7 @@
   @extend .padding;
   position: fixed;
   inset: 0 0 auto 0;
-  z-index: 1;
-  isolation: isolate;
+  z-index: 3;
   transition: background-color 0.5s;
 
   img {
@@ -68,7 +67,6 @@
     inset: 100% 0 auto 0;
     background-color: var(--clr-primary-500);
     translate: -100% 0;
-    z-index: -1;
     opacity: 0;
     transition: all 0.5s ease-in-out;
 
@@ -91,7 +89,8 @@
           padding-block: 1em;
           transition: background-color 0.3s;
 
-          &:is(:hover, :focus-visible) {
+          &:is(:hover, :focus-visible),
+          &.current {
             background-color: var(--clr-primary-300);
           }
         }

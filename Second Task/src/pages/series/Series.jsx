@@ -1,8 +1,13 @@
+import SideBar from "../../components/layout/SideBar";
+
 function Series() {
   return (
-    <>
-      <h1>Series</h1>
-    </>
+    <section className="series">
+      <SideBar />
+      <div className="info">
+        <h1>Series</h1>
+      </div>
+    </section>
   );
 }
 export default Series;
