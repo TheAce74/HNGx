@@ -13,11 +13,19 @@ export default function MovieCard({
   tomatoRating,
   id,
   movieCategories,
+  route,
 }) {
   const { genres } = useAppContext();
 
   return (
     <div className="movie-card" tabIndex={0} data-testid="movie-card">
+      <span className="movie-type">
+        {route === "movies"
+          ? "Movie"
+          : route === "series"
+          ? "TV Series"
+          : "Film"}
+      </span>
       <FavButton />
       <div>
         <img
@@ -53,11 +61,42 @@ export default function MovieCard({
           {movieCategories
             ?.map((id) => genres[id])
             .sort()
-            .join(", ")}
+            .join(", ")
+            .trim()[
+            movieCategories
+              ?.map((id) => genres[id])
+              .sort()
+              .join(", ")
+              .trim().length - 1
+          ] === ","
+            ? movieCategories
+                ?.map((id) => genres[id])
+                .sort()
+                .join(", ")
+                .trim()
+                .slice(
+                  0,
+                  movieCategories
+                    ?.map((id) => genres[id])
+                    .sort()
+                    .join(", ")
+                    .trim().length - 1
+                )
+            : movieCategories
+                ?.map((id) => genres[id])
+                .sort()
+                .join(", ")
+                .trim()}
         </div>
       </div>
-      <Link to={`/movies/${id}`}>
-        <Button>View Movie</Button>
+      <Link to={`/${route}/${id}`}>
+        <Button>
+          {route === "movies"
+            ? "View Movie"
+            : route === "series"
+            ? "View Series"
+            : "View"}
+        </Button>
       </Link>
     </div>
   );

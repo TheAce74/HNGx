@@ -138,6 +138,7 @@ function Movies() {
                     vote_average * 10 + Math.floor(Math.random() * 11)
                   }
                   movieCategories={genre_ids}
+                  route="movies"
                 />
               )
             )
@@ -172,9 +173,12 @@ function Movies() {
                       .replace(" 00:00:00 GMT", "")}
                   </p>
                   <FaCircle />
-                  <p aria-label="runtime" data-testid="movie-runtime">
-                    {`${movieState.data[0]?.runtime} mins`}
-                  </p>
+                  <span className="runtime">
+                    <p aria-label="runtime" data-testid="movie-runtime">
+                      {movieState.data[0]?.runtime}
+                    </p>
+                    <span>mins</span>
+                  </span>
                 </div>
                 <p
                   className="overview"
@@ -193,12 +197,16 @@ function Movies() {
                   </a>
                 )}
                 <div className="genres">
-                  <h2>Genres</h2>
-                  <div>
-                    {movieState.data[0]?.genres?.map((genre) => (
-                      <span key={uuidv4()}>{genres[genre.id]}</span>
-                    ))}
-                  </div>
+                  {movieState.data[0]?.genres?.length !== 0 ? (
+                    <>
+                      <h2>Genres</h2>
+                      <div>
+                        {movieState.data[0]?.genres?.map((genre) => (
+                          <span key={uuidv4()}>{genres[genre.id]}</span>
+                        ))}
+                      </div>
+                    </>
+                  ) : null}
                 </div>
               </div>
             </div>

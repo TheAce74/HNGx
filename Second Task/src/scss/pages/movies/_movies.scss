@@ -31,6 +31,12 @@
         > div:first-child {
           @extend .flex;
           justify-content: flex-start;
+
+          .runtime {
+            @extend .flex;
+            justify-content: flex-start;
+            gap: 0.2em;
+          }
         }
 
         svg {
@@ -60,6 +66,10 @@
           font-weight: 500;
           border-radius: 100vmax;
           padding: 0.4em 1em;
+
+          &:empty {
+            display: none;
+          }
         }
       }
     }

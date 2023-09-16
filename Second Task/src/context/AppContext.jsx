@@ -26,6 +26,9 @@ function AppContextProvider({ children }) {
     53: "Thriller",
     10752: "War",
     37: "Western",
+    10763: "News",
+    10766: "Soap",
+    10767: "Talk",
   };
   const value = {
     data,

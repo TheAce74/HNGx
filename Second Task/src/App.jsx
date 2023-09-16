@@ -35,6 +35,12 @@ function App() {
         {
           path: "/series",
           element: <Series />,
+          children: [
+            {
+              path: "/series/:id",
+              element: <Series />,
+            },
+          ],
         },
         {
           path: "/upcoming",

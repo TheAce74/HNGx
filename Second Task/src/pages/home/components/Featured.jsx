@@ -55,6 +55,7 @@ function Featured() {
                     vote_average * 10 + Math.floor(Math.random() * 11)
                   }
                   movieCategories={genre_ids}
+                  route="movies"
                 />
               )
             )

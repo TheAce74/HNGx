@@ -19,6 +19,20 @@
     transition: translate 0.5s;
   }
 
+  .movie-type {
+    @extend %button;
+    position: absolute;
+    z-index: 1;
+    top: 1.2em;
+    left: 1em;
+    background-color: var(--clr-neutral-100);
+    opacity: 0.8;
+    font-weight: 500;
+    color: var(--clr-neutral-400);
+    padding: 0.2em 0.8em;
+    border-radius: 100vmax;
+  }
+
   div:has(> .movie-poster) {
     position: relative;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
