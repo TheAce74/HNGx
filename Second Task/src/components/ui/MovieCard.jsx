@@ -24,7 +24,7 @@ export default function MovieCard({
           ? "Movie"
           : route === "series"
           ? "TV Series"
-          : "Film"}
+          : "Upcoming"}
       </span>
       <FavButton />
       <div>

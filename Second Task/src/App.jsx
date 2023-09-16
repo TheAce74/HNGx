@@ -45,6 +45,12 @@ function App() {
         {
           path: "/upcoming",
           element: <Upcoming />,
+          children: [
+            {
+              path: "/upcoming/:id",
+              element: <Upcoming />,
+            },
+          ],
         },
       ],
     },
