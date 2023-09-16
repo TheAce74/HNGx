@@ -12,7 +12,7 @@ function Hero({ setHeaderClass }) {
           setHeaderClass("header darken");
         }
       }}
-      rootMargin="-150px"
+      rootMargin="-600px 0px 0px 0px"
     >
       <img
         src="https://media.istockphoto.com/id/1224036158/photo/abstract-backgrounds-lights.jpg?s=612x612&w=0&k=20&c=uz_5ZIRS3WXXyYpCOy1Rm-_eHFpVLNFPZ_HUWcANK8I="
