@@ -47,10 +47,9 @@ function Featured() {
                   id={id}
                   moviePosterUrl={poster_path}
                   movieName={title}
-                  // movieReleaseDate={new Date(release_date)
-                  //   .toUTCString()
-                  //   .replace(" 00:00:00 GMT", "")}
-                  movieReleaseDate={release_date}
+                  movieReleaseDate={new Date(release_date)
+                    .toUTCString()
+                    .replace(" 00:00:00 GMT", "")}
                   imbdRating={vote_average * 10}
                   tomatoRating={
                     vote_average * 10 + Math.floor(Math.random() * 11)
