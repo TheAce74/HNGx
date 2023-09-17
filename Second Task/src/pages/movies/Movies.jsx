@@ -168,9 +168,10 @@ function Movies() {
                   </h1>
                   <FaCircle />
                   <p aria-label="release date" data-testid="movie-release-date">
-                    {new Date(movieState.data[0]?.release_date)
+                    {/* {new Date(movieState.data[0]?.release_date)
                       .toUTCString()
-                      .replace(" 00:00:00 GMT", "")}
+                      .replace(" 00:00:00 GMT", "")} */}
+                    {movieState.data[0]?.release_date}
                   </p>
                   <FaCircle />
                   <span className="runtime">
