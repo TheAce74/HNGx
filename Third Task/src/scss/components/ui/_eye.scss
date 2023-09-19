@@ -1,0 +1,64 @@
+#eye {
+  /* set these to blink faster/slower */
+  --duration-blink: 0.2s;
+  --duration-lashes: 0.2s;
+
+  /* calculated and fixed vars */
+  --delay-lashes: var(--duration-blink);
+  --duration-pupil: 0.1s;
+  --delay-pupil: calc(var(--duration-blink) * 2 / 3);
+}
+
+#eye-bottom,
+#eye-top {
+  stroke-linecap: round;
+}
+
+#eye-top,
+#eye-lashes {
+  transition: var(--duration-blink) ease-in;
+}
+
+#eye-pupil {
+  opacity: 0;
+  transition: opacity var(--duration-pupil) var(--delay-pupil) ease;
+}
+
+/* open state */
+.eye-open #eye-top,
+.eye-open #eye-lashes {
+  transform: rotateX(0.5turn);
+  animation: scaleUp var(--duration-lashes) var(--delay-lashes) ease-in-out;
+}
+
+.eye-open #eye-pupil {
+  opacity: 1;
+}
+
+/* close state */
+.eye-close #eye-lashes {
+  animation: scaleDown var(--duration-lashes) var(--duration-blink) ease-in-out;
+}
+
+.eye-close #eye-pupil {
+  opacity: 0;
+}
+
+/* keyframes */
+@keyframes scaleUp {
+  50% {
+    transform: rotateX(0.5turn) scaleY(1.15);
+  }
+  to {
+    transform: rotateX(0.5turn) scaleY(1);
+  }
+}
+
+@keyframes scaleDown {
+  50% {
+    transform: scaleY(1.15);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

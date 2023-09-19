@@ -1,0 +1,24 @@
+@use "../base" as *;
+
+.gallery {
+  user-select: none;
+
+  .user {
+    @extend .flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 3.5em;
+    aspect-ratio: 1;
+    text-align: center;
+    border: 2px solid #212529;
+    border-radius: 50%;
+    padding: 0.2em;
+    font-weight: 600;
+    background-color: #212529;
+    color: white;
+
+    span {
+      font-size: 1.5rem;
+    }
+  }
+}
