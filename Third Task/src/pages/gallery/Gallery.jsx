@@ -106,15 +106,12 @@ function Gallery() {
       if (data?.session?.user) {
         setUser(data.session);
         setLoader(false);
+        getImages();
       } else {
         navigate("/");
       }
     };
     getSession();
-
-    return () => {
-      getImages();
-    };
   }, []);
 
   return (
