@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import Spinner from "../../../components/ui/Spinner";
 
-export default function Image({ url, author, innerRef, ...otherProps }) {
+export default function Image({
+  url,
+  author,
+  innerRef,
+  isDragging,
+  ...otherProps
+}) {
   const [loading, setLoading] = useState(true);
   const imageRef = useRef(null);
 
@@ -19,7 +25,12 @@ export default function Image({ url, author, innerRef, ...otherProps }) {
       {loading && <Spinner />}
       <div className={loading ? "a hide" : "a"}>
         <figure>
-          <img src={url} alt={author} ref={imageRef} />
+          <img
+            src={url}
+            alt={author}
+            ref={imageRef}
+            className={isDragging ? "drag" : ""}
+          />
           <figcaption>{author}</figcaption>
         </figure>
       </div>

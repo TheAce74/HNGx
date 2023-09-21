@@ -24,18 +24,26 @@ function Gallery() {
     filter: "",
   });
   const amount = useRef(9);
+  const tags = useRef([]);
 
   const getImages = async () => {
     const response = await get(
       `https://picsum.photos/v2/list?limit=${amount.current}`
     );
     if (response.success) {
+      response.data = response.data.map((datum) => {
+        const index = datum.download_url.lastIndexOf("/") - 9;
+        const url = datum.download_url.slice(0, index + 4);
+        datum.download_url = `${url}/500/500`;
+        return datum;
+      });
       setImages((prevImages) => {
         return {
           ...prevImages,
           data: response.data,
         };
       });
+      tags.current = response.data.map((datum) => datum.author);
     }
   };
 
@@ -54,12 +62,19 @@ function Gallery() {
     if (images.data.length < MAX) {
       const response = await get(`https://picsum.photos/v2/list?limit=${num}`);
       if (response.success) {
+        response.data = response.data.map((datum) => {
+          const index = datum.download_url.lastIndexOf("/") - 9;
+          const url = datum.download_url.slice(0, index + 4);
+          datum.download_url = `${url}/500/500`;
+          return datum;
+        });
         setImages((prevImages) => {
           return {
             ...prevImages,
             data: response.data,
           };
         });
+        tags.current = response.data.map((datum) => datum.author);
         amount.current = num;
       }
     }
@@ -148,6 +163,22 @@ function Gallery() {
         stories. With our intuitive and user-friendly dashboard, you have the
         power to view, and rearrange captivating image narratives effortlessly.
       </p>
+      <p>
+        <b>Note:</b> Hover over the images to see their tags (i.e. authors). To
+        add more photos, simply click on the{" "}
+        <strong>
+          <em>See more</em>
+        </strong>{" "}
+        button below. When you generate more images, more tags will show up.
+      </p>
+      <h3 className="mb-3">Available Tag(s)</h3>
+      <div className="d-flex justify-content-start align-items-center flex-wrap gap-2 mb-4">
+        {Array.from(new Set(tags.current)).map((datum) => (
+          <span className="border border-2 p-2 rounded-2" key={uuidv4()}>
+            {datum}
+          </span>
+        ))}
+      </div>
       <input
         type="text"
         placeholder="Filter By Author"
@@ -156,9 +187,13 @@ function Gallery() {
       />
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId={uuidv4()}>
-          {(provided) => (
+          {(provided, snapshot) => (
             <ul
-              className="image position-relative mx-auto"
+              className={
+                snapshot.isDraggingOver
+                  ? "image position-relative mx-auto | drag"
+                  : "image position-relative mx-auto"
+              }
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
@@ -167,13 +202,14 @@ function Gallery() {
                   ?.toLowerCase()
                   ?.startsWith(images.filter.toLowerCase()) ? (
                   <Draggable key={id} draggableId={id} index={index}>
-                    {(provided) => (
+                    {(provided, snapshot) => (
                       <Image
                         url={download_url}
                         author={author}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         innerRef={provided.innerRef}
+                        isDragging={snapshot.isDragging}
                       />
                     )}
                   </Draggable>

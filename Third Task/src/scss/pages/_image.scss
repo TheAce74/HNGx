@@ -14,12 +14,14 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     transition: transform 1000ms;
+    border-radius: 0.5em;
   }
 
   figure {
     margin: 0;
     position: relative;
     overflow: hidden;
+    border-radius: 0.5em;
   }
 
   figure::after {
@@ -92,6 +94,10 @@
 
   &:has(.translate-middle) {
     height: 10em;
+  }
+
+  .drag {
+    filter: opacity(0.9);
   }
 }
 
