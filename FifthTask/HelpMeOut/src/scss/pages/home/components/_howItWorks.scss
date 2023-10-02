@@ -1,0 +1,47 @@
+@use "../../../base" as *;
+
+.how-it-works {
+  padding: 2em 4em;
+  min-height: 100dvh;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1em;
+  }
+
+  .steps {
+    @extend .flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    align-items: stretch;
+    text-align: center;
+
+    > div {
+      flex: 1;
+      flex-basis: max(20ch, 33.3% - 2em);
+
+      > span {
+        @extend .flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--clr-primary-500);
+        color: var(--clr-primary-50);
+        border-radius: 50%;
+        width: 2em;
+        aspect-ratio: 1;
+        margin-inline: auto;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      > * + * {
+        margin-top: 0.7em;
+      }
+
+      img {
+        margin-inline: auto;
+      }
+    }
+  }
+}

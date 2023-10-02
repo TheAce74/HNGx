@@ -1,0 +1,86 @@
+@use "../../abstracts" as *;
+@use "../../base" as *;
+
+.register {
+  padding: 1.5em 1em;
+
+  .logo {
+    width: 8em;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.1rem;
+    margin-block: 0.5em;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 2em;
+    width: 50%;
+    margin-inline: auto;
+  }
+
+  form {
+    width: 90%;
+    margin-inline: auto;
+
+    button[data-invert="true"] {
+      @extend .flex;
+      justify-content: center;
+      width: 100%;
+      padding: 0.7em;
+      margin-bottom: 1.5em;
+    }
+
+    .separate {
+      @extend .flex;
+      margin-block: 2em;
+
+      .line {
+        width: 45%;
+        height: 0.1em;
+        border-radius: 100vmax;
+        background-color: var(--clr-primary-100);
+      }
+    }
+
+    label,
+    input {
+      display: block;
+      margin-bottom: 0.8em;
+    }
+
+    label {
+      font-weight: bold;
+      color: var(--clr-primary-500);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5em 1em;
+      border-radius: 0.5em;
+      border: 2px solid var(--clr-primary-100);
+      background-color: transparent;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 1em;
+      padding-block: 0.8em;
+    }
+  }
+
+  @include min(small) {
+    form {
+      width: max(30%, 35ch);
+    }
+  }
+}
+
+body:has( .register) {
+  .header,
+  .footer {
+    display: none;
+  }
+}

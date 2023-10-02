@@ -1,0 +1,32 @@
+@use "../../base" as *;
+
+.button {
+  @extend %button;
+  --color: var(--clr-primary-500);
+  background-color: var(--color);
+  color: var(--clr-primary-50);
+  border: 2px solid var(--color);
+  border-radius: 0.5em;
+  padding: 0.2em 0.8em;
+  transition: all 0.3s;
+
+  &:is(:hover, :focus-visible) {
+    background-color: transparent;
+    color: var(--color);
+  }
+
+  &:active {
+    scale: 0.9;
+  }
+
+  &[data-invert="true"] {
+    --color: var(--clr-primary-50);
+    color: var(--clr-primary-500);
+    border: 2px solid var(--clr-primary-500);
+
+    &:is(:hover, :focus-visible) {
+      background-color: var(--clr-primary-500);
+      color: var(--clr-primary-50);
+    }
+  }
+}

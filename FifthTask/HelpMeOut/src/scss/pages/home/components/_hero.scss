@@ -1,0 +1,74 @@
+@use "../../../abstracts" as *;
+@use "../../../base" as *;
+
+.hero {
+  @extend .grid;
+  padding: 1em 4em;
+  min-height: calc(100dvh - em(70));
+
+  .left {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      margin-block: 1em 2em;
+    }
+
+    button {
+      @extend .flex;
+      padding: 1em;
+    }
+  }
+
+  .right {
+    @extend .grid;
+    position: relative;
+
+    > img {
+      width: 14em;
+    }
+  }
+
+  .inner-grid {
+    @extend .grid;
+    gap: 1em;
+    position: absolute;
+    inset: -1.5em 1.5em;
+
+    div {
+      img {
+        display: block;
+
+        &:first-child {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+
+  @include max(medium) {
+    padding: 2em;
+    grid-template-columns: 1fr;
+
+    .left {
+      width: 90%;
+      margin-inline: auto;
+    }
+
+    .right {
+      display: none;
+    }
+  }
+
+  @include max(small) {
+    .left {
+      width: 100%;
+      text-align: center;
+
+      button {
+        margin-inline: auto;
+      }
+    }
+  }
+}

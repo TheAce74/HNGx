@@ -1,0 +1,28 @@
+//Basic typography styles for body text
+@use "../abstracts" as *;
+
+body {
+  font-family: "Work Sans", sans-serif;
+  color: var(--clr-primary-400);
+  background-color: var(--clr-primary-50);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Sora", sans-serif;
+  color: var(--clr-primary-600);
+}
+
+html {
+  font-size: 1.1rem;
+  scroll-behavior: smooth;
+  scroll-padding-top: 4em;
+
+  @include max(small) {
+    font-size: 0.9rem;
+  }
+}

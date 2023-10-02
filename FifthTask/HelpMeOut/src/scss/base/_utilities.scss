@@ -1,0 +1,59 @@
+//utility classes, sass placeholders and css custom properties
+@use "../abstracts" as *;
+
+%sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+%button {
+  cursor: pointer;
+  border: none;
+}
+
+%link {
+  text-decoration: none;
+}
+
+:root {
+  @each $key, $value in $clr-primary {
+    --clr-primary-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-secondary {
+    --clr-secondary-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-neutral {
+    --clr-neutral-#{$key}: #{$value};
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.grid {
+  display: grid;
+  place-items: center;
+  gap: 2em;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.link {
+  --color: var(--clr-primary-500);
+  font-weight: 500;
+  color: var(--color);
+
+  &:is(:hover, :focus-visible) {
+    --color: var(--clr-primary-200);
+  }
+}
