@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "HelpMeOut",
+  "description": "Seamlessly record, and share your screen activities with precision.",
+  "icons": {
+    "128": "/assets/icon-128.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "/assets/icon.png",
+      "32": "/assets/icon.png",
+      "128": "/assets/icon-128.png"
+    }
+  },
+
+  "host_permissions": ["http://*/", "https://*/*"],
+
+  "permissions": ["scripting", "tabs", "activeTab"],
+  "version": "1.0.0"
+}
