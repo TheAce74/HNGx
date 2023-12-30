@@ -1,0 +1,9 @@
+@use "../../abstracts" as *;
+@use "../../base" as *;
+.profile {
+  @extend .flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+  min-height: calc(100dvh - em(185));
+}

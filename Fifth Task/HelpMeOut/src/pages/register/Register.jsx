@@ -14,7 +14,8 @@ function Register() {
   const { setUser, setLoader } = useAppContext();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const { signup } = useAuthentication();
+  const { signup, login, signInWithGoogle, signInWithFacebook } =
+    useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +35,15 @@ function Register() {
       if (signedUp) {
         emailRef.current.value = "";
         passwordRef.current.value = "";
+      } else {
+        const loggedIn = await login({
+          email: emailRef.current.value.toLowerCase(),
+          password: passwordRef.current.value,
+        });
+        if (loggedIn) {
+          emailRef.current.value = "";
+          passwordRef.current.value = "";
+        }
       }
     }
   };
@@ -61,11 +71,11 @@ function Register() {
       <h1>Log in or Sign up</h1>
       <p>Join millions of others in sharing successful moves on HelpMeOut.</p>
       <form onSubmit={handleSubmit}>
-        <Button invert={true}>
+        <Button invert={true} handleClick={signInWithGoogle}>
           <img src={google} alt="" />
           <span>Continue with Google</span>
         </Button>
-        <Button invert={true}>
+        <Button invert={true} handleClick={signInWithFacebook}>
           <img src={facebook} alt="" />
           <span>Continue with Facebook</span>
         </Button>
@@ -90,7 +100,7 @@ function Register() {
           required
           ref={passwordRef}
         />
-        <Button type="submit">Sign Up</Button>
+        <Button type="submit">Login or Sign Up</Button>
       </form>
     </section>
   );

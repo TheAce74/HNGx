@@ -75,11 +75,35 @@ function useAuthentication() {
     } else {
       setLoader(false);
       setUser({});
-      navigate("/");
+      navigate("/register");
     }
   };
 
-  return { signup, login, logout };
+  const signInWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: import.meta.env.VITE_REDIRECT_URL,
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
+    });
+    console.log(data, error);
+  };
+
+  const signInWithFacebook = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "facebook",
+      options: {
+        redirectTo: import.meta.env.VITE_REDIRECT_URL,
+      },
+    });
+    console.log(data, error);
+  };
+
+  return { signup, login, logout, signInWithGoogle, signInWithFacebook };
 }
 
 export { useAuthentication };

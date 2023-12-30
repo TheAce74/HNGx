@@ -13,7 +13,6 @@ function App() {
     {
       element: (
         <AppContextProvider>
-          <Header />
           <Outlet />
           <Footer />
           <ScrollToTop />
@@ -23,11 +22,22 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/register",
-          element: <Register />,
+          element: (
+            <>
+              <Header />
+              <Outlet />
+            </>
+          ),
+          children: [
+            {
+              path: "/",
+              element: <Home />,
+            },
+            {
+              path: "/register",
+              element: <Register />,
+            },
+          ],
         },
         {
           path: "/profile",
